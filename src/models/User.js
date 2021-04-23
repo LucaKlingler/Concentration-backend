@@ -20,6 +20,7 @@ const userSchema = new Schema({
       default: false,
     },
   },
+  role: String,
   createdTs: String,
 });
 

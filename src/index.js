@@ -2,6 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const http = require('http');
 const mongoose = require('mongoose');
+const path = require('path');
+
+require('app-module-path').addPath(path.join(`${__dirname}`, './models'));
+require('app-module-path').addPath(path.join(`${__dirname}`, './middleware'));
+require('app-module-path').addPath(path.join(`${__dirname}`, '../res/'));
 
 const config = require('../res/config.json');
 const routes = require('./routes');

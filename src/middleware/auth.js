@@ -10,8 +10,7 @@ module.exports = (req, res, next) => {
     User.findById(decoded.userId, async (errAuthedUsr, usr) => {
       if (errAuthedUsr) return res.status(500).send();
       if (usr === null) return res.status(401).send();
-      const whitelistRoutes = ['/api/v1/auth/verifyPhone', '/api/v1/auth/resendVerificationSms'];
-      if (!usr.ts.verifiedPhone && !whitelistRoutes.includes(req.baseUrl)) return res.status(409).send('validate phone please');
+      const whitelistRoutes = [];
       req.decodedUser = usr;
       next();
     });
