@@ -30,7 +30,7 @@ io.on('connection', function(socket) {
 
 // verbindet datenbank
 const mongoUrl = `mongodb+srv://${config.mongoUsr}:${config.mongoPwd}@${config.mongoUrl}/${config.mongoDbName}?retryWrites=true&w=majority`;
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('db connected')).catch(() => console.error('error db'));
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('db connected')).catch((err) => console.error(err));
 
 // startet Server
 server.listen(3011);

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-//Inhalt der Captchas definieren
+// Inhalt der Captchas definieren
 const captchaSchema = new Schema({
   pictures: Array,
   failedCaptchas: Array,
