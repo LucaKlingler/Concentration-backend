@@ -19,17 +19,18 @@ router.post('/', async (req, res) => {
   });
   newUser.save()
     .then((usr) => {
-        const token = jwt.sign({ userId: usr._id }, config.jwtSecret);
-        // send session token
-        res.status(200).json(
-          {
-            token,
-            preName: usr.preName,
-            lastName: usr.lastName,
-          },
-        );
+      const token = jwt.sign({ userId: usr._id }, config.jwtSecret);
+      // send session token
+      res.status(200).json(
+        {
+          token,
+          preName: usr.preName,
+          lastName: usr.lastName,
+        },
+      );
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(400).send('account taken');
     });
 });

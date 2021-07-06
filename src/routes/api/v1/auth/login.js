@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
   User.findOne({ username: req.body.username })
     .then((usr) => {
       if (!usr) {
-        res.status(401).send('invalid credentials');
+        res.status(401).send('invalid credentials - err 1');
       // checks password validity
       } else if (bcrypt.compareSync(req.body.pwd, usr.pwd)) {
         // generates session token
@@ -22,10 +22,11 @@ router.post('/', (req, res) => {
             token,
             preName: usr.preName,
             lastName: usr.lastName,
+            role: usr.role,
           },
         );
       } else {
-        res.status(401).send('invalid credentials');
+        res.status(401).send('invalid credentials - err2');
       }
     })
     .catch((err) => {
