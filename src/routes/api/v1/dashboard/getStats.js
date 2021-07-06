@@ -4,7 +4,7 @@ const Captcha = require('../../../../models/Captcha.js');
 
 //ruft alle Captchas aus DB ab
 router.get('/', async (req, res) => {
-  Captcha.find({}, (err, captchas) => {
+  Captcha.find({ userId: req.decodedUser._id }, (err, captchas) => {
     const arr = [];
     captchas.forEach((e) => {
       arr.push({

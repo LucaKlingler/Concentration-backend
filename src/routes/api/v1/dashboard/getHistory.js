@@ -1,10 +1,13 @@
 const router = require('express').Router();
-const axios = require('axios');
 const Captcha = require('../../../../models/Captcha.js');
 
-//ruft letzten 5 Captchas aus DB ab
-router.get('/', async (req, res) => { 
-  const captchas = await Captcha.find().sort({ _id: -1 }).limit(5);
+// ruft letzten 5 Captchas aus DB ab
+router.get('/', async (req, res) => {
+  const captchas = await Captcha.find({
+    // eslint-disable-next-line no-underscore-dangle
+    userId: req.decodedUser._id,
+    notificationTime: { $gt: req.query.time },
+  }).sort({ _id: -1 }); // .limit(5);
   const arr = [];
   captchas.forEach((e) => {
     arr.push({
