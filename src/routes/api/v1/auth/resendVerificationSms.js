@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const config = require('config');
 const smsService = require('../../../../services/smsMessente');
 
 router.get('/', (req, res) => {

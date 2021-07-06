@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const config = require('config.json');
 const User = require('User');
 
 // user login endpoint
@@ -15,7 +14,7 @@ router.post('/', (req, res) => {
       } else if (bcrypt.compareSync(req.body.pwd, usr.pwd)) {
         // generates session token
         // eslint-disable-next-line no-underscore-dangle
-        const token = jwt.sign({ userId: usr._id }, config.jwtSecret);
+        const token = jwt.sign({ userId: usr._id }, process.env.JWT_SECRET);
         // send session token
         res.status(200).json(
           {
