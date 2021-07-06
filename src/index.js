@@ -1,8 +1,11 @@
+const path = require('path');
+require('dotenv').config({path: path.join(__dirname, '..', '.env')})
 const express = require('express');
 const cors = require('cors');
 const http = require('http');
 const mongoose = require('mongoose');
-const path = require('path');
+
+if (!process.env.MONGO_USER || !process.env.MONGO_PWD || !process.env.MONGO_URL || !process.env.MONGO_DB || !process.env.JWT_SECRET) return console.error('Please set all the required env vars: MONGO_USER MONGO_PWD MONGO_URL MONGO_DB JWT_SECRET');
 
 require('app-module-path').addPath(path.join(`${__dirname}`, './models'));
 require('app-module-path').addPath(path.join(`${__dirname}`, './middleware'));
