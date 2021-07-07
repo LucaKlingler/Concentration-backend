@@ -16,6 +16,7 @@ router.post('/', (req, res) => {
         // eslint-disable-next-line no-underscore-dangle
         const token = jwt.sign({ userId: usr._id }, process.env.JWT_SECRET);
         // send session token
+        console.log(req.body.username);
         res.status(200).json(
           {
             token,
