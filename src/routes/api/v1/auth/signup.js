@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
     .then((usr) => {
       const token = jwt.sign({ userId: usr._id }, process.env.JWT_SECRET);
       // send session token
-      console.log(usr.username);
+      console.log(Date.now(), usr.username);
       res.status(200).json(
         {
           token,

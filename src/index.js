@@ -27,5 +27,5 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }).
 const server = http.createServer(app);
 server.listen(3000);
 // eslint-disable-next-line no-console
-console.log('Server gestartet @ 3000');
+console.log(Date.now(), 'Server gestartet @ 3000');
 // MONGO_USER MONGO_PWD MONGO_URL MONGO_DB JWT_SECRET
